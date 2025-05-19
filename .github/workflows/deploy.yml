@@ -106,11 +106,15 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: ghcr.io/raduenpm/frontend:latest
+          tags: |
+            ghcr.io/raduenpm/frontend:latest
+            ghcr.io/raduenpm/frontend:${{ github.sha }}
 
       - name: Build and push backend image
         uses: docker/build-push-action@v5
         with:
           context: ./backend
           push: true
-          tags: ghcr.io/raduenpm/backend:latest
+          tags: |
+            ghcr.io/raduenpm/backend:latest
+            ghcr.io/raduenpm/backend:${{ github.sha }}
